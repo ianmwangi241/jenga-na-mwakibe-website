@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, ClipboardList } from "lucide-react";
-import logo from "@/assets/logo-trim.png.asset.json";
+import logo from "@/assets/logo-trim.png";
 import { useCart } from "@/lib/cart";
 import { SITE } from "@/lib/site";
 
@@ -21,7 +21,7 @@ export function SiteHeader() {
     <header className="no-print sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4">
         <Link to="/" className="flex shrink-0 items-center" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt={`${SITE.name} logo`} className="h-16 w-auto" />
+          <img src={logo} alt={`${SITE.name} logo`} className="h-20 w-20" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((n) => (
