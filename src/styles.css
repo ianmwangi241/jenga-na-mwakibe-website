@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-sky: var(--sky);
+  --color-brand-red: var(--brand-red);
+  --color-whatsapp: var(--whatsapp);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.2 0.09 272);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.09 272);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.09 272);
+  /* #56AEEA */
+  --primary: oklch(0.72 0.12 241);
+  --primary-foreground: oklch(0.17 0.09 272);
+  /* #D9EEFC */
+  --sky: oklch(0.94 0.03 235);
+  --secondary: oklch(0.94 0.03 235);
+  --secondary-foreground: oklch(0.17 0.09 272);
+  --muted: oklch(0.97 0.012 235);
+  --muted-foreground: oklch(0.47 0.04 260);
+  --accent: oklch(0.94 0.03 235);
+  --accent-foreground: oklch(0.17 0.09 272);
+  /* #080D3B */
+  --navy: oklch(0.17 0.09 272);
+  --navy-foreground: oklch(1 0 0);
+  /* #D92732 */
+  --brand-red: oklch(0.56 0.2 25);
+  --whatsapp: oklch(0.62 0.17 150);
+  --destructive: oklch(0.56 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.02 240);
+  --input: oklch(0.88 0.025 240);
+  --ring: oklch(0.72 0.12 241);
+  --shadow-card: 0 1px 2px oklch(0.17 0.09 272 / 6%), 0 8px 24px -12px oklch(0.17 0.09 272 / 18%);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; color: var(--color-navy); }
+}
+
+@utility shadow-card { box-shadow: var(--shadow-card); }
+
+@utility btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border-radius: var(--radius); padding: 0.75rem 1.25rem; font-weight: 700; font-size: 0.925rem;
+  transition: all 150ms ease; cursor: pointer;
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+@utility btn-primary {
+  background: var(--primary); color: var(--primary-foreground);
+  &:hover { filter: brightness(0.94); }
+}
+@utility btn-navy {
+  background: var(--navy); color: var(--navy-foreground);
+  &:hover { filter: brightness(1.3); }
+}
+@utility btn-outline {
+  border: 1.5px solid var(--navy); color: var(--navy); background: transparent;
+  &:hover { background: var(--sky); }
+}
+@utility btn-ghost-light {
+  border: 1.5px solid oklch(1 0 0 / 60%); color: var(--navy-foreground);
+  &:hover { background: oklch(1 0 0 / 12%); }
+}
+@utility btn-whatsapp {
+  background: var(--whatsapp); color: oklch(1 0 0);
+  &:hover { filter: brightness(0.94); }
+}
+@utility field {
+  width: 100%; border: 1px solid var(--input); border-radius: calc(var(--radius) - 2px);
+  background: var(--background); padding: 0.7rem 0.85rem; font-size: 0.95rem;
+  &:focus { outline: 2px solid var(--ring); outline-offset: 1px; }
+}
+@utility eyebrow {
+  font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary);
+}
+@utility blueprint {
+  background-image:
+    linear-gradient(oklch(0.72 0.12 241 / 12%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.72 0.12 241 / 12%) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media print {
+  .no-print { display: none !important; }
+}
